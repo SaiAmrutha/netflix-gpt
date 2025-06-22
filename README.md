@@ -2,8 +2,11 @@
 
 - create react app
 - configured TailwindCss
+- Header section with netflix logo
+- Login form
+- Sign up form
 
-# FEATURES WE ARE GONNA BUILD
+# FEATURES BUILDING ON NETFLIX-GPT
 
 - Login/Signup Page
   - Sing In/ SignUp form
