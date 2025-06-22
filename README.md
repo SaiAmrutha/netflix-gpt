@@ -14,7 +14,15 @@
 - Implemented sign in user API
 - Created Redux store with userSlice
 - Implemented Sign out feature
-- Will fetch movies from TMDB
+- Unsubscribed to the onAuthStateChanged callback
+- Add hardcoded values to constants file
+- Register for TMDB API and create an app and get API access token
+- Get data from TMDB with now playing movies list via API
+
+# BUG FIXES
+
+- Sign up user displayName and profile picture update
+- If the user is not logged in then redirect to browse to login page and vice versa
 
 # FEATURES BUILDING ON NETFLIX-GPT
 
@@ -31,6 +39,17 @@
 - Netflix GPT
   - Search Bar
   - Movie Suggestions
+
+# BROWSE PAGE IN DETAIL
+
+Header
+MainContainer
+
+- Video Background
+- Video title
+  Secondary Container
+- Movie List \* n
+- cards \* n
 
 # STEPS FOR DEPLOYMENT IN FIREBASE
 

@@ -5,7 +5,7 @@ import {
 } from "firebase/auth";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { BG_IMG, USER_ICON } from "../utils/constants.js";
 import { auth } from "../utils/firebase";
 import { addUser } from "../utils/userSlice.js";
 import { checkValidData } from "../utils/Validate.js";
@@ -14,12 +14,10 @@ import Header from "./Header";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
-  const dispatch = useDispatch;
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-
+  const dispatch = useDispatch();
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
@@ -46,7 +44,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/91521781?v=4",
+            photoURL: USER_ICON,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -60,7 +58,6 @@ const Login = () => {
                 })
               );
               console.log(user);
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -82,7 +79,6 @@ const Login = () => {
           // signed In
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -96,11 +92,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src="
-https://assets.nflxext.com/ffe/siteui/vlv3/8200f588-2e93-4c95-8eab-ebba17821657/web/IN-en-20250616-TRIFECTA-perspective_9cbc87b2-d9bb-4fa8-9f8f-a4fe8fc72545_medium.jpg"
-          alt="background-image"
-        />
+        <img src={BG_IMG} alt="background-image" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
