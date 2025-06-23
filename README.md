@@ -26,6 +26,11 @@
 - update store with trailer video data
 - Embedded the Youtube video and made it autoplay on mute
 - used TailwindCSS to make the MainContainer look like Netflix
+- Built secondary component
+- Built movie list
+- Built movie card
+- Got the TMDB poster image URL
+- used custom hooks for seperate sections
 
 # BUG FIXES
 
@@ -56,8 +61,16 @@ MainContainer
 - Video Background
 - Video title
   Secondary Container
-- Movie List \* n
-- cards \* n
+- Movie List x n
+- cards x n
+
+Secondary Container
+
+- MovieList - Popular
+  MovieCard x n
+- MovieList - Now playing
+- MovieList - Trending
+- MovieList - Horror
 
 # STEPS FOR DEPLOYMENT IN FIREBASE
 

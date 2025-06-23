@@ -57,7 +57,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              console.log(user);
+              // console.log(user);
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -78,7 +78,7 @@ const Login = () => {
         .then((userCredential) => {
           // signed In
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
