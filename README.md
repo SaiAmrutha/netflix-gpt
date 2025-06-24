@@ -31,6 +31,9 @@
 - Built movie card
 - Got the TMDB poster image URL
 - used custom hooks for seperate sections
+- GPT search page
+- GPT search bar
+- Multilingual feature in gpt-search page
 
 # BUG FIXES
 
