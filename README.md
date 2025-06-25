@@ -34,6 +34,7 @@
 - GPT search page
 - GPT search bar
 - Multilingual feature in gpt-search page
+- Used GeminiAPI to fetch movies depending on our mood using a query
 
 # BUG FIXES
 
