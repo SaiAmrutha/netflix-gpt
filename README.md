@@ -34,7 +34,11 @@
 - GPT search page
 - GPT search bar
 - Multilingual feature in gpt-search page
-- Used GeminiAPI to fetch movies depending on our mood using a query
+- Used GeminiAPI to fetch movies depending on our mood using a prompt
+- created gpt slice and reused movieList component to make movie suggestions container
+- Memoization
+- Added .env and added it to gitignore
+- Trying to make the website responsive
 
 # BUG FIXES
 
