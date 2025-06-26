@@ -38,7 +38,7 @@
 - created gpt slice and reused movieList component to make movie suggestions container
 - Memoization
 - Added .env and added it to gitignore
-- Trying to make the website responsive
+- Made the website responsive
 
 # BUG FIXES
 

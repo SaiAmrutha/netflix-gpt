@@ -24,9 +24,6 @@ const Login = () => {
 
   // validate the form data
   const handleButtonClick = () => {
-    // console.log(email.current.value);
-    // console.log(password.current.value);
-    // console.log(name);
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
 
@@ -57,7 +54,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              // console.log(user);
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -78,7 +74,6 @@ const Login = () => {
         .then((userCredential) => {
           // signed In
           const user = userCredential.user;
-          // console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -92,11 +87,15 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img src={BG_IMG} alt="background-image" />
+        <img
+          className="h-screen object-cover md:h-screen -z-10 fixed top-0 left-0 w-full"
+          src={BG_IMG}
+          alt="background-image"
+        />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute w-3/12 p-5 bg-black text-white my-60 mx-auto left-0 right-0 bg-opacity-80"
+        className="w-full absolute md:w-3/12 p-5 bg-black text-white my-60 mx-auto left-0 right-0 bg-opacity-80"
       >
         <h1 className="font-bold text-2xl p-5">
           {isSignInForm ? "Sign In" : "Sign Up"}
