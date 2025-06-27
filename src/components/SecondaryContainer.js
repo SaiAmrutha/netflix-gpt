@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
 import MovieTrailerOverlay from "./MovieTrailerOverlay";
 
-const SecondaryContainer = () => {
+const SecondaryContainer = ({ onCardClick }) => {
   const movies = useSelector((store) => store.movies);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -15,22 +15,22 @@ const SecondaryContainer = () => {
           <MovieList
             title={"Now Playing"}
             movies={movies.nowPlayingMovies}
-            onCardClick={setSelectedMovie}
+            onCardClick={onCardClick}
           />
           <MovieList
             title={"Popular"}
             movies={movies.popularMovies}
-            onCardClick={setSelectedMovie}
+            onCardClick={onCardClick}
           />
           <MovieList
             title={"Top Rated"}
             movies={movies.topRatedMovies}
-            onCardClick={setSelectedMovie}
+            onCardClick={onCardClick}
           />
           <MovieList
             title={"Upcoming Movies"}
             movies={movies.upcomingMovies}
-            onCardClick={setSelectedMovie}
+            onCardClick={onCardClick}
           />
         </div>
 

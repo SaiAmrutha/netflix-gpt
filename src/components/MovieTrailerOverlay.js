@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import VideoTitle from "./VideoTitle";
 
 const MovieTrailerOverlay = ({ movie, onClose }) => {
   const [trailerKey, setTrailerKey] = useState(null);
-
+  const iframeRef = useRef(null);
   useEffect(() => {
     const fetchTrailer = async () => {
       try {
@@ -37,6 +37,7 @@ const MovieTrailerOverlay = ({ movie, onClose }) => {
         <VideoTitle
           title={movie.original_title || movie.title}
           overview={movie.overview}
+          iframeRef={iframeRef}
         />
       </div>
 
@@ -44,14 +45,15 @@ const MovieTrailerOverlay = ({ movie, onClose }) => {
       <div className="relative z-0">
         {trailerKey ? (
           <iframe
+            ref={iframeRef}
             className="w-screen aspect-video"
-            src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1`}
+            src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&enablejsapi=1`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           ></iframe>
         ) : (
           <div className="text-white text-center pt-40">
-            Loading trailer.............
+            Loading trailer.......
           </div>
         )}
       </div>

@@ -40,6 +40,13 @@
 - Added .env and added it to gitignore
 - Made the website responsive
 
+Extra features I added
+
+- Made the movie cards hoverable with descripion
+- Movie card is clickable with movie trailer playing in the background along with close button
+- Making play button work
+- Toggling play/pause button to play/stop the video if required
+
 # BUG FIXES
 
 - Sign up user displayName and profile picture update

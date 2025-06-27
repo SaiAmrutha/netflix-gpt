@@ -1,8 +1,10 @@
+import { useRef } from "react";
 import { useSelector } from "react-redux";
 import VideoBackground from "./VideoBackground";
 import VideoTitle from "./VideoTitle";
 
 const MainContainer = () => {
+  const iframeRef = useRef(null);
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
 
   if (movies === null) return; //if(!movies) is also valid syntax
@@ -13,8 +15,12 @@ const MainContainer = () => {
 
   return (
     <div className="pt-[30%] bg-black md:pt-0 relative">
-      <VideoTitle title={original_title} overview={overview} />
-      <VideoBackground movieId={id} />
+      <VideoTitle
+        title={original_title}
+        overview={overview}
+        iframeRef={iframeRef}
+      />
+      <VideoBackground movieId={id} iframeRef={iframeRef} />
     </div>
   );
 };
