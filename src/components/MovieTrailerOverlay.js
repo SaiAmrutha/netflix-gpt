@@ -24,7 +24,7 @@ const MovieTrailerOverlay = ({ movie, onClose }) => {
 
   if (!movie) return null;
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-85 overflow-y-auto">
+    <div className="fixed top-28 left-52 transform -transalte-x-1/2 -transalete-y-1/2 w-[1220px] h-[600px] z-50 bg-black bg-opacity-85 overflow-hidden rounded-lg">
       {/* close button */}
       <button
         onClick={onClose}
@@ -33,20 +33,19 @@ const MovieTrailerOverlay = ({ movie, onClose }) => {
         ❌
       </button>
       {/* Movie info title */}
-      <div className="relative z-10">
+      <div className="relative z-10 max-h-40 mb-4">
         <VideoTitle
           title={movie.original_title || movie.title}
           overview={movie.overview}
           iframeRef={iframeRef}
         />
       </div>
-
       {/* Video/Trailer */}
       <div className="relative z-0">
         {trailerKey ? (
           <iframe
             ref={iframeRef}
-            className="w-screen aspect-video"
+            className="w-full mt-28 h-96 rounded-md"
             src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&enablejsapi=1`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
