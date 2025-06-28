@@ -46,6 +46,8 @@ Extra features I added
 - Movie card is clickable with movie trailer playing in the background along with close button
 - Making play button work
 - Toggling play/pause button to play/stop the video if required
+- More info button gives details like cast/crew, release date, genre, etc
+- Added volume icon button to mute or unmute the trailer's audio without depending on iframe
 
 # BUG FIXES
 

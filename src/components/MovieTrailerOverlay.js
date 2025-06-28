@@ -24,7 +24,7 @@ const MovieTrailerOverlay = ({ movie, onClose }) => {
 
   if (!movie) return null;
   return (
-    <div className="fixed top-28 left-52 transform -transalte-x-1/2 -transalete-y-1/2 w-[1220px] h-[600px] z-50 bg-black bg-opacity-85 overflow-hidden rounded-lg">
+    <div className="fixed top-28 left-52 transform  w-[1220px] h-[600px] z-50 bg-black bg-opacity-85 overflow-hidden rounded-lg">
       {/* close button */}
       <button
         onClick={onClose}
@@ -38,6 +38,7 @@ const MovieTrailerOverlay = ({ movie, onClose }) => {
           title={movie.original_title || movie.title}
           overview={movie.overview}
           iframeRef={iframeRef}
+          movieId={movie?.id}
         />
       </div>
       {/* Video/Trailer */}
@@ -45,7 +46,7 @@ const MovieTrailerOverlay = ({ movie, onClose }) => {
         {trailerKey ? (
           <iframe
             ref={iframeRef}
-            className="w-full mt-28 h-96 rounded-md"
+            className="w-full mt-28 h-96 rounded-md pointer-events-auto"
             src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&enablejsapi=1`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

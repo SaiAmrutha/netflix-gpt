@@ -1,21 +1,35 @@
 import { useState } from "react";
+import MovieDetails from "./MovieDetails";
 
-const VideoTitle = ({ title, overview, iframeRef }) => {
+const VideoTitle = ({ title, overview, iframeRef, movieId }) => {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [showDetails, setShowDetails] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
-  const togglePlayback = () => {
+  const sendYTCommand = (funcName) => {
     const iframe = iframeRef?.current;
     if (!iframe) return;
 
-    iframe.contentWindow.postMessage(
-      JSON.stringify({
-        event: "command",
-        func: isPlaying ? "pauseVideo" : "playVideo",
-        args: [],
-      }),
-      "*"
-    );
+    setTimeout(() => {
+      iframe.contentWindow.postMessage(
+        JSON.stringify({
+          event: "command",
+          func: funcName,
+          args: [],
+        }),
+        "*"
+      );
+    }, 100);
+  };
+
+  const togglePlayback = () => {
+    sendYTCommand(isPlaying ? "pauseVideo" : "playVideo");
     setIsPlaying(!isPlaying);
+  };
+
+  const toggleMute = () => {
+    sendYTCommand(isMuted ? "unMute" : "mute");
+    setIsMuted(!isMuted);
   };
 
   return (
@@ -29,10 +43,22 @@ const VideoTitle = ({ title, overview, iframeRef }) => {
         >
           {isPlaying ? "⏸ Pause" : "▶ Play"}
         </button>
-        <button className="hidden md:inline-block mx-12 bg-gray-600 text-white px-3 md:p-4  md:px-6 text-2xl bg-opacity-50 font-bold rounded-sm hover:bg-opacity-80">
+        <button
+          onClick={() => setShowDetails(true)}
+          className="hidden md:inline-block mx-12 bg-gray-600 text-white px-3 md:p-4  md:px-6 text-2xl bg-opacity-50 font-bold rounded-sm hover:bg-opacity-80 z-20"
+        >
           ℹ More Info
         </button>
+        <button
+          onClick={toggleMute}
+          className=" bg-gray-600 text-white px-3 md:p-4 md:px-10 text-2xl bg-opacity-50 font-bold rounded-sm hover:bg-opacity-80"
+        >
+          {isMuted ? "🔇 Mute" : "🔊 Sound"}
+        </button>
       </div>
+      {showDetails && (
+        <MovieDetails movieId={movieId} onClose={() => setShowDetails(false)} />
+      )}
     </div>
   );
 };

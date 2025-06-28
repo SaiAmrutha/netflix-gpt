@@ -19,6 +19,7 @@ const MainContainer = () => {
         title={original_title}
         overview={overview}
         iframeRef={iframeRef}
+        movieId={id}
       />
       <VideoBackground movieId={id} iframeRef={iframeRef} />
     </div>
