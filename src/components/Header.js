@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeLanguage } from "../utils/configSlice";
@@ -7,8 +7,11 @@ import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { auth } from "../utils/firebase";
 import { toggleGptSearchView } from "../utils/useGPTSlice";
 import { addUser, removeUser } from "../utils/userSlice";
+import MovieCalendar from "./MovieCalendar";
 
 const Header = () => {
+  const [showCalendar, setShowCalendar] = useState(false);
+
   const handleGPTSearchClick = () => {
     // toggle GPT search
     dispatch(toggleGptSearchView());
@@ -65,8 +68,16 @@ const Header = () => {
         src={NETFLIX_LOGO}
         alt="netflix-logo"
       />
+
       {user && (
         <div className="flex p-2">
+          <button
+            onClick={() => setShowCalendar(true)}
+            className="py-2  my-2  text-5xl"
+          >
+            📅
+          </button>
+
           {showGPTSearch && (
             <select
               className="p-2 m-2 bg-gray-600 text-white"
@@ -96,6 +107,14 @@ const Header = () => {
           >
             Sign Out
           </button>
+        </div>
+      )}
+
+      {showCalendar && (
+        <div className="z-50 fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
+          <div className="bg-[#111] text-white p-6 rounded-lg w-[90%] md:w-[600px] max-h-[80vh] shadow-2xl">
+            <MovieCalendar onClose={() => setShowCalendar(false)} />
+          </div>
         </div>
       )}
     </div>

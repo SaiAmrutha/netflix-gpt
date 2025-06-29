@@ -48,6 +48,7 @@ Extra features I added
 - Toggling play/pause button to play/stop the video if required
 - More info button gives details like cast/crew, release date, genre, etc
 - Added volume icon button to mute or unmute the trailer's audio without depending on iframe
+- Added calendar in the header to see the list of movies releasing this month with the dates highlighted along with poster and movie titl
 
 # BUG FIXES
 
