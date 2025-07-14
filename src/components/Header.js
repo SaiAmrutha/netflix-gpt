@@ -2,6 +2,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getUserAvatar } from "../utils/avatar";
 import { changeLanguage } from "../utils/configSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { auth } from "../utils/firebase";
@@ -47,7 +48,7 @@ const Header = () => {
             uid: uid,
             email: email,
             displayName: displayName,
-            photoURL: photoURL,
+            photoURL: photoURL || getUserAvatar(displayName || email || "USER"),
           })
         );
         navigate("/browse");
@@ -98,6 +99,9 @@ const Header = () => {
             className="hidden md:block w-12 h-12 my-2 mx-3"
             alt="user-icon"
             src={user?.photoURL}
+            onError={(e) => {
+              e.target.src = getUserAvatar(user?.displayName || "User");
+            }}
           />
           <button
             onClick={handleSignOut}

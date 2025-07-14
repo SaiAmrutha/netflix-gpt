@@ -5,7 +5,9 @@ import {
 } from "firebase/auth";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { BG_IMG, USER_ICON } from "../utils/constants.js";
+import { getUserAvatar } from "../utils/avatar";
+import { BG_IMG } from "../utils/constants.js";
+
 import { auth } from "../utils/firebase";
 import { addUser } from "../utils/userSlice.js";
 import { checkValidData } from "../utils/Validate.js";
@@ -15,6 +17,7 @@ const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const name = useRef(null);
+  const avatarUrl = getUserAvatar(name);
   const email = useRef(null);
   const password = useRef(null);
   const dispatch = useDispatch();
@@ -39,9 +42,9 @@ const Login = () => {
         .then((userCredential) => {
           // signed In
           const user = userCredential.user;
-          updateProfile(user, {
-            displayName: name.current.value,
-            photoURL: USER_ICON,
+          updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: getUserAvatar(name),
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -51,7 +54,7 @@ const Login = () => {
                   uid: uid,
                   email: email,
                   displayName: displayName,
-                  photoURL: photoURL,
+                  photoURL: getUserAvatar(displayName),
                 })
               );
             })
