@@ -24,7 +24,7 @@ const MovieTrailerOverlay = ({ movie, onClose }) => {
 
   if (!movie) return null;
   return (
-    <div className="fixed top-28 left-52 transform  w-[1220px] h-[600px] z-50 bg-black bg-opacity-85 overflow-hidden rounded-lg">
+    <div className="fixed top-20 left-0 md:left-52 transform w-full md:w-[1220px] h-screen md:h-[600px] z-50 bg-black bg-opacity-85 overflow-auto md:overflow-hidden rounded-none md:rounded-lg">
       {/* close button */}
       <button
         onClick={onClose}

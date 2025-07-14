@@ -33,10 +33,11 @@ const VideoTitle = ({ title, overview, iframeRef, movieId }) => {
   };
 
   return (
-    <div className="w-screen aspect-video pt-[15%] px-6 md:px-40 absolute text-white bg-gradient-to-r from-black">
+    <div className="w-full pt-[20%] px-6 md:px-40 absolute text-white bg-gradient-to-r from-black">
       <h1 className="text-2xl md:text-5xl font-bold">{title}</h1>
       <p className="hidden md:inline-block py-6 text-lg w-2/4">{overview}</p>
-      <div className="my-4 md:m-0">
+      {/* <div className="my-4 md:m-0"> */}
+      <div className="flex flex-col md:flex-row gap-4 my-4 md:my-0">
         <button
           onClick={togglePlayback}
           className=" bg-gray-600 text-white px-3 md:p-4 md:px-10 text-2xl bg-opacity-50 font-bold rounded-sm hover:bg-opacity-80"
@@ -45,7 +46,7 @@ const VideoTitle = ({ title, overview, iframeRef, movieId }) => {
         </button>
         <button
           onClick={() => setShowDetails(true)}
-          className="hidden md:inline-block mx-12 bg-gray-600 text-white px-3 md:p-4  md:px-6 text-2xl bg-opacity-50 font-bold rounded-sm hover:bg-opacity-80 z-20"
+          className=" bg-gray-600 text-white px-3 md:p-4  md:px-6 text-2xl bg-opacity-50 font-bold rounded-sm hover:bg-opacity-80 z-20"
         >
           ℹ More Info
         </button>

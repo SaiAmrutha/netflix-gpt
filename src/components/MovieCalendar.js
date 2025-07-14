@@ -47,14 +47,14 @@ const MovieCalendar = ({ onClose }) => {
   }, [year, month]);
 
   return (
-    <div className="relative mt-3 pr-3 text-white transform  w-[980px] h-[600px]  overflow-y-auto">
+    <div className="relative mt-3  md:pr-3 text-white transform w-[400px]  md:w-[980px] h-[600px]  md:overflow-y-auto">
       <button
         onClick={onClose}
         className="absolute top-1 right-4 text-white text-3xl z-50"
       >
         ❌
       </button>
-      <h1 className="text-3xl font-bold mb-8 text-center">
+      <h1 className="text-lg md:text-3xl font-bold mb-4 md:mb-8 text-center">
         Upcoming Releases - {today.toLocaleString("default", { month: "long" })}
       </h1>
       {/* dates header */}
@@ -116,7 +116,7 @@ const MovieCalendar = ({ onClose }) => {
               <li className="w-60">No movies releasing on this date</li>
             )
           ) : (
-            <li className="w-[400%]">
+            <li className="md:w-[400%]">
               Click on a date to see movies specially the red border ones
             </li>
           )}

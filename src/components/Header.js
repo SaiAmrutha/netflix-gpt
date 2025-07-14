@@ -112,7 +112,7 @@ const Header = () => {
 
       {showCalendar && (
         <div className="z-50 fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
-          <div className="bg-[#111] text-white p-6 rounded-lg w-[90%] md:w-[600px] max-h-[80vh] shadow-2xl">
+          <div className="bg-[#111] text-white md:p-6 rounded-lg w-[90%] md:w-[600px] max-h-[80vh] shadow-2xl">
             <MovieCalendar onClose={() => setShowCalendar(false)} />
           </div>
         </div>
