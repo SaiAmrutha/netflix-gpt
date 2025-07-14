@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeLanguage } from "../utils/configSlice";
-import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { auth } from "../utils/firebase";
 import { toggleGptSearchView } from "../utils/useGPTSlice";
 import { addUser, removeUser } from "../utils/userSlice";
@@ -63,11 +63,9 @@ const Header = () => {
 
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-30 flex flex-col md:flex-row justify-between">
-      <img
-        className="w-44 mx-auto md:mx-0"
-        src={NETFLIX_LOGO}
-        alt="netflix-logo"
-      />
+      <span className="text-red-600 font-extrabold text-4xl md:text-6xl whitespace-nowrap text-center md:flex-row md:justify-between">
+        Smart<span className="text-white">Flix</span>
+      </span>
 
       {user && (
         <div className="flex p-2">
