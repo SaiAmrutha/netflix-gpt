@@ -130,7 +130,7 @@ const Login = () => {
         </button>
         <p className="text-bold cursor-pointer" onClick={toggleSignInForm}>
           {isSignInForm
-            ? "New to Netflix? Sign up now"
+            ? "New to SmartFlix? Sign up now"
             : "Already registered? Sign in now."}
         </p>
       </form>
